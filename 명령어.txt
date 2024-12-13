@@ -1,0 +1,36 @@
+python segment/train.py --batch 16 --epochs 2 --data data/math.yaml --weight yolov7-seg.pt --device cpu --name custom --imgsz 320
+
+
+# 비정사각형
+python segment/train.py --imgsz 2400 --data data.yaml --weights yolov5s-seg.pt --rect
+
+python segment/train.py --imgsz 2400 --data data/math.yaml --weights yolov7-seg.pt --batch-size 2 --epochs 1 --device cpu --workers 1 --rect --cache disk --noval
+
+
+####################### 학습
+python segment/train.py --epochs 1 --workers 1 --device cpu --batch-size 2 --data data/math.yaml --cfg cfg/training/math.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_math_finetuned --hyp hyp.scratch-high_math.yaml --img 2400 --rect --cache disk --noval
+
+
+
+python segment/train.py --epochs 2 --workers 1 --device cpu --batch-size 2 --data data/math.yaml --cfg cfg/training/math.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_math_finetuned --hyp hyp.scratch-high_math.yaml --img 320 --rect
+
+
+python segment/train.py --epochs 5 --workers 1 --device cpu --batch-size 2 --data data/math.yaml --cfg cfg/training/math.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_math_finetuned --hyp hyp.scratch-high_math.yaml --img 320 --rect --cache disk --noval
+
+
+###########################확인
+python segment/predict.py --weights best_copy_2.pt --source "data/math/images/val" 
+
+python segment/predict.py --weights run/train-seg/yolov7_seg_math_finetuned2/weights/best.pt --source "data/math/images/val" 
+
+
+
+
+
+
+####################### 학습!!!!!!!!
+python segment/train.py --epochs 2 --workers 1 --device cpu --batch-size 2 --data data/math.yaml --cfg cfg/training/math.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_math_finetuned --hyp hyp.scratch.p5.yaml  --img 320 --rect
+
+python segment/train.py --epochs 1 --workers 1 --device cpu --batch-size 2 --data data/math.yaml --cfg cfg/training/math.yaml --weights 'yolov7-seg.pt' --name yolov7_seg_math_finetuned --hyp hyp.scratch.p5.yaml --img 2400 --rect --cache disk --noval
+
+

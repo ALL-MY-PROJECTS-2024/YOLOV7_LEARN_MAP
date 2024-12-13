@@ -1,0 +1,15 @@
+# COCO 2017 dataset http://cocodataset.org
+
+# download command/URL (optional)
+#download: bash ./scripts/get_coco.sh
+
+train: ./data/math/images/train  # 
+val: ./data/math/images/val      # 
+test: ./data/math/images/test    # 
+# number of classes
+nc: 11
+
+# class names
+names: [ 'river', 'River area', 'embankment', 'Safe zone', 'road', 'Submersion depth 1',
+    'Submersion depth 2', 'Submersion depth 3', 'Submersion depth 4', 'Submersion depth 5',
+    'Submersion depth 6' ]
